@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row, Col, Navbar, Nav, Container, NavDropdown, Form, FormControl} from 'react-bootstrap';
+import './Navigationbar.css';
 
 const Navigationbar = () => {
   return (
@@ -8,8 +9,8 @@ const Navigationbar = () => {
           <Container>
           <Navbar.Brand href="/home">
             <img
-              src="images/disney--1.svg"
-              width="80"
+              src="images/olaf.png"
+              width="120"
               height="80"
               className="d-inline-block align-top"
               alt=""
@@ -18,20 +19,27 @@ const Navigationbar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">
+              <Nav.Link href="/favorite">
                 Favorite
               </Nav.Link>
               <Nav.Link href="#pricing">Serial</Nav.Link>
               <Nav.Link href="#pricing">Film</Nav.Link>
               <Nav.Link href="#deets">Kids</Nav.Link>
-              <Form className="Search">
+              {/* <Form className="Search">
                 <FormControl
                   type="search"
                   placeholder="Judul Film"
                   className="me-2"
                   aria-label="Search"
                 />
-              </Form>
+              </Form> */}
+              <div className="search">
+                <div className="search-box">
+                <button className="btn-search"><i className="fas fa-search"></i></button>
+                <input type="text" className="input-search" placeholder="Cari">
+                </input>
+              </div>
+              </div>  
               <NavDropdown title="Semua" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Kdrama</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Cdrama</NavDropdown.Item>
