@@ -1,0 +1,8 @@
+.container-video-favorite{
+    margin-top: 100px;
+    background-color: #161E2E;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }

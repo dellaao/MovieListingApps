@@ -1,58 +1,60 @@
-.carousel-caption{
- 
-    background-color: rgba(0, 0, 0, 0.452);
+/* .col-4{
+  width:15% !important;
+  padding-right: 0% !important;
+}
+
+@media (min-width: 600px){
+  .col-4{
+    width:33% !important;
+    padding-right: 0% !important;
   }
-  
-  .w-100{
-    height: 90vh !important;
-    object-fit: cover !important;
-  }
-  
-  
-  .card{
-    /* background-color: antiquewhite; */
-    margin-top: 20px;
-    margin-bottom: 90px;
-  }
-  
-  
-  .info{
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    text-align: justify;
-  }
-  
-  .card-img, .card-img-top{
-    width:100%;
-    height:auto;
-    position: absolute;
-    border-radius: 30px;
-  }
-  
-  .film{
-    width:100%;
-    height: auto;
-    background-color: #161E2E;
-    border-radius:  30px;
-    margin-right: 80px ;
-    padding-right: 50px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    top: 40px;
-    bottom: 40px;
-  }
-  
-  .btn{
-    /* color: #161E2E !important; */
-    /* background-color: #161E2E; */
-    border-radius: 50px;
-    position: absolute;
-  }
-  
-  .button-read-more{
-    margin-left: 0px;
-    margin-right: 20px;
-    /* width: 40vh; */
-    color: white;
-    background-color: #161E2E;
-  }
+} */
+
+
+.movie-wrapper {
+  display: inline-block;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-bottom: 10px;
+}
+    
+.img-movie-thumb {
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  width: 150px;
+  height: 220px;
+}
+
+.img-movie-thumb img {
+  width: 100%;
+}
+
+p.vote-movie {
+  position: absolute;
+  color: rgb(0, 0, 0);
+  bottom: 5px;
+  right: 6px;
+  margin: 0;
+  background: rgb(255, 255, 255);
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+p.title-movie {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin: 0px;
+  color: white;
+}
+
+p.date-movie {
+  font-size: 14px;
+  color: #999;
+  margin: 0px;
+}

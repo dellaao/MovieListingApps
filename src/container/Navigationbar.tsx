@@ -1,13 +1,21 @@
 import React from 'react'
 import { Row, Col, Navbar, Nav, Container, NavDropdown, Form, FormControl} from 'react-bootstrap';
 import './Navigationbar.css';
+import { useNavigate } from "react-router-dom";
 
 const Navigationbar = () => {
+  let navigate = useNavigate();
+  function handleClickHome() {
+    navigate('/home')
+  }
+  function handleClickFav() {
+    navigate('/favorite')
+  }
   return (
     <div className='navigation-bar'>
           <Navbar className="fixed-top" collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container>
-          <Navbar.Brand href="/home">
+          <Navbar.Brand onClick={handleClickHome}>
             <img
               src="images/olaf.png"
               width="120"
@@ -19,7 +27,7 @@ const Navigationbar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/favorite">
+              <Nav.Link onClick={handleClickFav}>
                 Favorite
               </Nav.Link>
               <Nav.Link href="#pricing">Serial</Nav.Link>
@@ -35,10 +43,10 @@ const Navigationbar = () => {
               </Form> */}
               <div className="search">
                 <div className="search-box">
-                <button className="btn-search"><i className="fas fa-search"></i></button>
-                <input type="text" className="input-search" placeholder="Cari">
-                </input>
-              </div>
+                  {/* <button className="btn-search"><i className="fas fa-search"></i></button> */}
+                  <input type="text" className="input-search" placeholder="Cari">
+                  </input>
+                </div>
               </div>  
               <NavDropdown title="Semua" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Kdrama</NavDropdown.Item>

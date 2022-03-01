@@ -1,85 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Row, Col, Navbar, Nav, Container, NavDropdown, Form, FormControl} from 'react-bootstrap';
 import './Listfilm.css';
+import axios from "axios";
 
-const Listfilm = () => {
+interface IMovie {
+  id:string;
+  poster:string;
+  date:string;
+  title:string;
+  vote:string;
+} 
+
+const Listfilm = (props:IMovie) => {
   return (
-    <div className='card'>  
-        <Container>
-        <Row>
-          <Col xs={6} md={4}>
-            <div></div>
-              <div className="card">
-                <img src="/images/encanto-poster.jpeg" />
-                <div className="info">
-                    <h1>Encanto</h1>
-                    <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-                    <a href='/detail'>
-                        <button  className='button-read-more'>Read More</button>
-                    </a>
-                </div>
+    <div className='card' id={props.id}> 
+          <div className='movie-wrapper'>
+              <div className='img-movie-thumb'>
+                  <img src={props.poster} alt="" />
               </div>
-          </Col>
-          <Col xs={6} md={4}>
-            <div></div>
-              <div className="card">
-                <img src="/images/frozen-poster.jpg" />
-                <div className="info">
-                    <h1>Frozen II</h1>
-                    <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-                    <button className='button-read-more'>Read More</button>
-                </div>
-              </div>
-          </Col>
-          <Col xs={6} md={4}>
-            <div></div>
-              <div className="card">
-                <img src="/images/rons-poster.jpg" />
-                <div className="info">
-                    <h1>Rons Gone Wrong</h1>
-                    <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-                    <button className='button-read-more'>Read More</button>
-                </div>
-              </div>
-          </Col>
-          <Col xs={6} md={4}>
-            <div></div>
-              <div className="card">
-                <img src="/images/all-poster.jpg" />
-                <div className="info">
-                    <h1>All Of Us Are Dead</h1>
-                    <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-                    <button className='button-read-more'>Read More</button>
-                </div>
-              </div>
-          </Col>
-          <Col xs={6} md={4}>
-            <div></div>
-              <div className="card">
-                <img src="/images/hotel-poster.jpg" />
-                <div className="info">
-                    <h1>Hotel Transylvania</h1>
-                    <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-                    <button className='button-read-more'>Read More</button>
-                </div>
-              </div>
-          </Col>
-          <Col xs={6} md={4}>
-            <div></div>
-              <div className="card">
-                <img src="/images/shang-poster.jpg" />
-                <div className="info">
-                    <h1>Shang Chi</h1>
-                    <p>Lorem Ipsum is simply dummy text from the printing and typeseting industry</p>
-                    <button className='button-read-more'>Read More</button>
-                </div>
-              </div>
-          </Col>
-        </Row>
-        </Container>
-
-        </div>
+              <p className='vote-movie'>{props.vote}</p>
+              <p className='title-movie'>{props.title}</p>
+              <p className='date-movie'>{props.date}</p>
+            </div>
+    </div>
   )
+}
+
+Listfilm.defaultProps ={
+  id:'',
+  vote: '00.00',
+  title: 'Title',
+  date: 'Jan, 2022'
 }
 
 export default Listfilm
