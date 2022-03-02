@@ -18,12 +18,14 @@ interface IMovie {
   date:string;
   title:string;
   vote_average:string;
+  overview:string;
+  backdrop_path:string;
 }
 
 const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w1280/";
 
 const Home = () => {
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   function handleClickDetail(){
     navigate('/detail')
@@ -75,12 +77,15 @@ const Home = () => {
             />
           </Carousel.Item>
         </Carousel>
+ 
         </div>
-        
+
+        <h1 className='title-trending'>Trending</h1>
         <div className="container-video">
+          
           {
             dataMovie && dataMovie.map((c) =>
-              <Listfilm key={c.id} id={`${c.id}`} poster={`${BASE_IMAGE_URL}${c.poster_path}`} title={c.title} date={c.release_date} vote={c.vote_average} />
+              <Listfilm key={c.id} id={`${c.id}`} poster={`${BASE_IMAGE_URL}${c.poster_path}`} backdrop={`${BASE_IMAGE_URL}${c.backdrop_path}`} title={c.title} date={c.release_date} vote={c.vote_average} detail={c.overview}/>
             )
           }
           

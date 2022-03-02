@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navigationbar from '../container/Navigationbar';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -10,10 +10,12 @@ import Favorite from './Favorite';
 import { useNavigate } from 'react-router';
 
 const Detail = () => {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     function handleClickFav(){
         navigate('/Favorite')
     }
+    const [item, setitem] = useState(null);
+
     return (
         <div className='detail'>
             <Navigationbar/>
@@ -39,6 +41,7 @@ const Detail = () => {
                 </p>
             </div>
             </figure>
+            
             <Footer/>               
         </div>
     )

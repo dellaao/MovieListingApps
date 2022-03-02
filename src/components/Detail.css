@@ -35,7 +35,7 @@ body {
     /* justify-content: center; */
 }
 
-.heading__primary{
+/* .heading__primary{
     font-size: 40px!important;
 }
 
@@ -139,16 +139,17 @@ body {
     color: rgb(190, 190, 71);
 
 }
+ */
 
 
-
-/* batas */
+/* batas ini asli */
 
 /* body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto', sans-serif;
 } */
+
 .wrapper{
     margin-top: 100px;
 }
