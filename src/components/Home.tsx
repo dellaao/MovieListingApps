@@ -32,18 +32,18 @@ const Home = () => {
   }
 
   const [dataMovie, setDataMovie] = useState<IMovie[]>([]);
-
   const fetchTrending = async () => {
     const {data} = await axios.get(
-      "https://api.themoviedb.org/3/trending/all/week?api_key=eccc5ea1919b90fc7004f8df41e8beed"
+      "https://api.themoviedb.org/3/movie/popular?api_key=eccc5ea1919b90fc7004f8df41e8beed&language=en-US&page=1"
     );
-    console.log(data.results);
     setDataMovie(data.results);
   };
 
   useEffect(() => {
     fetchTrending();
   }, []);
+
+  // scroll
 
 
   return (
@@ -53,29 +53,18 @@ const Home = () => {
 
         <div className='carousel'>
         <Carousel>
-          <Carousel.Item>
-            <a className='image-carousel' onClick={handleClickDetail}>
+          {
+            dataMovie && dataMovie.map((c) =>
+            <Carousel.Item>
+            <a className='image-carousel'>
               <img
                 className="d-block w-100"
-                src="/images/encanto-hd.jpg"
+                src={`${BASE_IMAGE_URL}${c.backdrop_path}`}
                 alt="First slide"
               />
             </a>
           </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="/images/frozen2-hd.jpg"
-              alt="Second slide"
-            />
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="/images/krustykrab-hd.png"
-              alt="Third slide"
-            />
-          </Carousel.Item>
+          )}
         </Carousel>
  
         </div>

@@ -11,6 +11,7 @@
 } */
 
 .movie-wrapper {
+  width: 150px;
   display: inline-block;
   box-sizing: border-box;
   margin-top: 10px;
@@ -31,10 +32,12 @@
   width: 100%;
 }
 
+/* kalo tambah button bottomnya 100px */
 p.vote-movie {
   position: absolute;
   color: rgb(0, 0, 0);
-  bottom: 100px;
+  /* bottom: 100px; */
+  bottom: 55px;
   right: 6px;
   margin: 0;
   background: rgb(255, 255, 255);
@@ -52,9 +55,10 @@ p.vote-movie {
   margin-bottom: 2px;
 }
 
-p.title-movie {
-  font-size: 14px;
-  font-weight: bold;
+.title-movie {
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font-size: 15px;
+  font-weight:400 ;
   text-transform: capitalize;
   margin: 0px;
   color: white;
@@ -73,9 +77,74 @@ p.date-movie {
 }
 
 .modal-content{
-  /* width:800px !important;
-  margin-left: 0px; */
+  width:150% !important;
+  /* height:200% !important; */
+  /* margin-left: 0px; */
   background-color:  #161E2E;
+}
+
+@media  (max-width: 987px){
+  .modal-dialog{
+    max-width: 415px !important;
+    margin: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  .movie__img {
+    margin-top: 20px;
+    margin-bottom: 400px;
+    margin-left: 10px;
+    width: 80%;
+    display: block;
+    border-radius: 20px;
+  }
+  
+  .movie__content {
+    margin-bottom:400px;
+    text-align: justify;
+    flex: 1;
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+}
+@media (min-width:988px){
+
+  .modal-dialog {
+    max-width: 843px !important;
+    margin: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  .movie__img {
+    margin-top: 0px;
+    margin-bottom: 400px;
+    margin-left: 10px;
+    width: 60%;
+    display: block;
+    border-radius: 20px;
+  }
+  
+  .movie__content {
+    /* background-color: #fff; */
+    margin-bottom:400px;
+    text-align: justify;
+    flex: 1;
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.btn-primary{
+  color: #161E2E;
+  background-color: white !important;
+  border-color: white;
+}
+
+.btn-close{
+  background-color: #fff !important;
 }
 
 .details-button{
@@ -106,9 +175,9 @@ p.date-movie {
   flex: 0 0 45%;
 }
 
-.movie__img {
+/* .movie__img {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 400px;
   margin-left: 10px;
   width: 100%;
   display: block;
@@ -116,14 +185,13 @@ p.date-movie {
 }
 
 .movie__content {
-  /* background-color: #fff; */
+  margin-bottom:400px;
   text-align: justify;
   flex: 1;
   padding: 35px 30px;
   display: flex;
   flex-direction: column;
-}
-
+} */
 
 .movie__title {
 display: flex;
