@@ -1,21 +1,39 @@
-import React from 'react'
+import { data } from 'jquery';
+import React, { useEffect, useState } from 'react';
 import Footer from '../container/Footer'
 import Listfilm from '../container/Listfilm'
+import {} from '../container/Listfilm'
 import Navigationbar from '../container/Navigationbar'
 import Detail from './Detail'
 import './Favorite.css'
 
-const movies =['1','2','3','4','5','6','1','2','3','4','5','6'];
+const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w1280/";
+interface IMovie {
+  id:string;
+  poster_path:string;
+  release_date:string;
+  title:string;
+  vote_average:string;
+  overview:string;
+  backdrop_path:string;
+}
+interface FavProps{
+  dataMovie:IMovie[]
+}
 
-const Favorite = () => {
+const Favorite = ({dataMovie}:FavProps) => {
+  
   return (
     <div>
         <Navigationbar/>
-
         <div className="container-video-favorite">
-          {/* {movies.map(movie=>(
-            <Listfilm/>
-          ))} */}
+        {
+            dataMovie && dataMovie.map((dataMovie) =>
+              <Listfilm key={dataMovie.id} id={dataMovie.id} poster_path={`${BASE_IMAGE_URL}${dataMovie.poster_path}`} backdrop_path={`${BASE_IMAGE_URL}${dataMovie.backdrop_path}`} title={dataMovie.title} release_date={dataMovie.release_date} vote_average={dataMovie.vote_average} overview={dataMovie.overview}/>
+              
+              )
+          }
+          
         </div>
 
         <Footer/>

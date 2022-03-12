@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Component } from 'react'
 import { Row, Col, Navbar, Nav, Container, NavDropdown, Form, FormControl} from 'react-bootstrap';
 import './Listfilm.css';
 import axios from "axios";
@@ -10,19 +10,20 @@ import ModalFooter from 'react-bootstrap/ModalFooter';
 import ModalDialog from 'react-bootstrap/ModalDialog';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router';
+import Favorite from '../components/Favorite';
 
-
+const BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w1280/";
 interface IMovie {
   id:string;
-  poster:string;
-  date:string;
+  poster_path:string;
+  release_date:string;
   title:string;
-  vote:string;
-  detail:string;
-  backdrop:string;
-} 
+  vote_average:string;
+  overview:string;
+  backdrop_path:string;
+}
 
-const Listfilm = (props:IMovie) => {
+export const Listfilm = (props:IMovie) => {
 
   const navigate = useNavigate();
     function handleClickFav(){
@@ -31,21 +32,43 @@ const Listfilm = (props:IMovie) => {
 
   const [show, setShow] = useState(false);
 
+  // add data
+
+   const [dataMovie, setDataMovie] = useState<IMovie[]>([]);
+
+  const [dataMovie1, setDataMovie1] = useState<IMovie>({
+    id:"",
+    poster_path:"",
+    release_date:"",
+    title:"",
+    vote_average:"",
+    overview:"",
+    backdrop_path:""
+  });
+
+  const addFav = (item:IMovie) => {
+    const newFavList = [...dataMovie, item];
+    setDataMovie(newFavList);
+    console.log(item);
+    console.log(newFavList);
+    console.log(dataMovie);
+    console.log(dataMovie1);
+    console.log(setDataMovie);
+  }
+  
+
   return (
-    <div className='card' id={props.id}> 
+    <div className='card' id={`${props.id}`}> 
           <div className='movie-wrapper'>
               <div className='img-movie-thumb'>
-                  <img onClick={() => setShow(true)} src={props.poster} alt="" />
+                  <img onClick={() => setShow(true)} src={props.poster_path} alt="" />
               </div>
               <p className='vote-movie'>
                 <img src='./images/star.png'>
                 </img>
-                {props.vote}</p>
+                {props.vote_average}</p>
               <p onClick={() => setShow(true)} className='title-movie'>{props.title}</p>
-              <p onClick={() => setShow(true)} className='date-movie'>{props.date}</p>
-              {/* <Button onClick={() => setShow(true)} className='details-button' variant="light" >
-                See Details
-              </Button> */}
+              <p onClick={() => setShow(true)} className='date-movie'>{props.release_date}</p>
               <Modal
                 show={show}
                 onHide={() => setShow(false)}
@@ -53,14 +76,11 @@ const Listfilm = (props:IMovie) => {
                 aria-labelledby="example-custom-modal-styling-title"
               >
                 <Modal.Header closeButton>
-                  {/* <Modal.Title id="example-custom-modal-styling-title">
-                    Movie Detail
-                  </Modal.Title> */}
                 </Modal.Header>
                 <Modal.Body>
                   <figure className="movie">
                     <div className="movie__hero">
-                        <img src={props.poster} className="movie__img">
+                        <img src={props.poster_path} className="movie__img">
                         </img>
                     </div>
                     <div className="movie__content">
@@ -70,9 +90,9 @@ const Listfilm = (props:IMovie) => {
                         <div className="movie__tag movie__tag--2">#comedy</div> */}
                         </div>
                         <p className="movie__description">
-                          {props.detail}
+                          {props.overview}
                         <a onClick={handleClickFav}>
-                            <Button variant="light" size="lg">
+                            <Button onClick={() => addFav(dataMovie1)} variant="light" size="lg">
                                 Add To Favorite
                             </Button>
                         </a>
@@ -81,7 +101,7 @@ const Listfilm = (props:IMovie) => {
                     </figure>
                 </Modal.Body>
               </Modal>
-          </div> 
+          </div>
     </div>
   )
 }

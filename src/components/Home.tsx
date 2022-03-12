@@ -10,9 +10,10 @@ import Footer from '../container/Footer';
 import Listfilm from '../container/Listfilm';
 import { useNavigate } from 'react-router';
 import axios from "axios";
+import Favorite from './Favorite';
 
 interface IMovie {
-  id:number;
+  id:string;
   poster_path:string;
   release_date:string;
   date:string;
@@ -36,15 +37,24 @@ const Home = () => {
     const {data} = await axios.get(
       "https://api.themoviedb.org/3/movie/popular?api_key=eccc5ea1919b90fc7004f8df41e8beed&language=en-US&page=1"
     );
+    console.log(data.results);
     setDataMovie(data.results);
   };
 
   useEffect(() => {
     fetchTrending();
+    
   }, []);
 
-  // scroll
-
+  // add
+  const addFav = (item:IMovie) => {
+    const newFavList = [...dataMovie, item];
+    setDataMovie(newFavList);
+    console.log(item);
+    console.log(newFavList);
+    console.log(dataMovie);
+    console.log(setDataMovie);
+  }
 
   return (
       <div>
@@ -74,13 +84,11 @@ const Home = () => {
           
           {
             dataMovie && dataMovie.map((c) =>
-              <Listfilm key={c.id} id={`${c.id}`} poster={`${BASE_IMAGE_URL}${c.poster_path}`} backdrop={`${BASE_IMAGE_URL}${c.backdrop_path}`} title={c.title} date={c.release_date} vote={c.vote_average} detail={c.overview}/>
+              <Listfilm key={c.id} id={c.id} poster_path={`${BASE_IMAGE_URL}${c.poster_path}`} backdrop_path={`${BASE_IMAGE_URL}${c.backdrop_path}`} title={c.title} release_date={c.release_date} vote_average={c.vote_average} overview={c.overview}/>
             )
           }
           
         </div>
-        
-        
         <Footer/>
 
       </div>
